@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Form</title>
+</head>
+<body>
+    <h1 style="text-align: center;"><span style="color: blue;">Polytechnics</span></h1>
+
+    <form method="post">
+        {% csrf_token %}  <!-- CSRF token for security -->
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Redirect button to register_page -->
+    <button onclick="window.location.href='/register/'">Register</button>
+</body>
+</html>

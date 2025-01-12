@@ -1,0 +1,64 @@
+<!-- register_teacher.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Teacher</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Login form -->
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            <body background="https://kitrinos.neocities.org/purplebg.gif">
+                <font size="10" color="green"></font>
+                <p align="center">
+                <font size="10" color="green">
+                </font>
+                </p>
+            <style>
+            table
+            {
+            width:1000px;
+            }
+            th
+            {
+            height:20px;
+            }
+            </style>
+            
+            
+            <table>
+            <tbody><tr>
+            <style type="text/css">
+            table.sample {
+              border-width: 5px;
+                border-spacing: 2px;
+                border-style: outset;
+                border-color: limegreen;
+                border-collapse: separate;
+                background: black url(https://kitrinos.neocities.org/pocketdimension.gif) repeat
+            }
+            table.sample td {
+                border-width: 2px;
+                padding: 1px;
+                border-style: inset;
+                border-color: black;
+                background: black url(https://kitrinos.neocities.org/pocketdimension.gif) repeat
+                -moz-border-radius: ;
+            }
+            </style>
+            <h1 style="text-align: center;"><span style="color: blue ;">Polytechnics</span></h1>
+<head>
+    <title>Register Teacher</title>
+</head>
+<body>
+    <h1>Register Teacher</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

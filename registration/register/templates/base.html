@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Django App
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
+  </head>
+  <body>
+   <!----<body style="background-colorrgb(0,0,0);">
+      <style>
+          body {
+           animation: backgroundScroll 80s linear infinite;
+             background: #ddd;
+             background-image: url(https://lopster.neocities.org/newer/pap.png);
+             background-attachment: fixed;
+         }
+         
+         @keyframes backgroundScroll {
+             0% {
+             background-position: 0 0;
+         }
+           100% {
+             background-position: 4000px 0;
+         }
+         
+         }
+      </style> -->
+      <style>
+        body{
+            animation: backgroundScroll 80s linear infinite;
+            background-image: url(https://cdn.pixabay.com/photo/2023/11/06/09/52/mountain-8369262_960_720.jpg);
+            background-attachment: fixed;
+            background-size: 100% auto;
+            background-position: center;
+            width: 100% auto;
+            height: 100vh auto ;
+            image-rendering: crisp-edges; /* add this to enhance image quality */
+          }
+          
+/*<!---- @keyframes backgroundScroll {
+            0% {
+              background-position: 0 0;
+            }
+            100% {
+              background-position: 4000px 0;
+            } --->*/
+          }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Polytechnics</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="../home">Home</a>
+          </li>
+         <!----<li class="nav-item">
+            <a class="nav-link" href="../login">Log in</a>
+          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="../contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../view">view</a>
+          </li>
+        </ul>
+        <form method="submit" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="logout-button">Logout</button>
+          <style>
+          logout-button {
+            background-color: #ff4d4d;
+            color: blue;
+            border: weight;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        logout-button:hover {
+            background-color: #e60000;
+        }
+        
+        logout-link {
+            color: #ff4d4d;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        logout-link:hover {
+            color: #e60000;
+        }
+      </style>
+      </form>
+      
+      
+        
+      </div>
+    </nav>
+    
+    <div class="container">{% block content %} {% endblock %}</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
+ 

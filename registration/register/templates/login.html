@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Login form -->
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Registration Form</title>
+    <style>
+        body {
+            animation: backgroundScroll 80s linear infinite;
+            background-image: url(https://cdn.pixabay.com/photo/2023/11/06/09/52/mountain-8369262_960_720.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+       
+
+        .container {
+            max-width: 800px;
+            background: #fff;
+            width: 90%;
+            padding: 25px 40px 10px 40px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .text {
+            text-align: center;
+            font-size: 41px;
+            font-weight: 600;
+            background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-data {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-data input,
+        .input-data textarea {
+            display: block;
+            width: 100%;
+            height: 40px;
+            border: none;
+            font-size: 17px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .input-data input:focus ~ label,
+        .input-data input:valid ~ label,
+        .input-data textarea:focus ~ label,
+        .input-data textarea:valid ~ label {
+            transform: translateY(-20px);
+            font-size: 14px;
+            color: #3498db;
+        }
+
+        .input-data label {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .underline {
+            position: absolute;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            background: #3498db;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .input-data input:focus ~ .underline,
+        .input-data input:valid ~ .underline,
+        .input-data textarea:focus ~ .underline,
+        .input-data textarea:valid ~ .underline {
+            transform: scale(1);
+        }
+
+        .submit-btn .input-data {
+            width: 48%;
+            display: inline-block;
+        }
+
+        .submit-btn .input-data input {
+            background: linear-gradient(115deg, #56d8e4, #9f01ea);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn .input-data input:hover {
+            background: linear-gradient(115deg, #9f01ea, #56d8e4);
+        }
+
+        @media (max-width: 700px) {
+            .container .text {
+                font-size: 30px;
+            }
+
+            .submit-btn .input-data {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+        
+            <h1 style="text-align: center;"><span style="color: blue ;">Polytechnics</span></h1>
+            <script>
+                function checkUserType() {
+                    var userType = document.querySelector('input[name="user_type"]:checked').value;
+                    if (userType === 'teacher') {
+                        document.getElementById('studentFields').style.display = 'none';
+                        document.getElementById('teacherFields').style.display = 'block';
+                    } else {
+                        document.getElementById('studentFields').style.display = 'block';
+                        document.getElementById('teacherFields').style.display = 'none';
+                    }
+                }
+        
+                function setSubmitType(type) {
+                    document.getElementById('submitType').value = type;
+                }
+        
+                window.onload = function() {
+                    checkUserType(); // Check on page load
+                };
+            </script>
+        </head>
+        <body>
+            
+            <form method="post">
+                {% csrf_token %}
+                {{ form.user_type }}
+                <div id="studentFields">
+                    {{ form.name.label_tag }} {{ form.name }}<br>
+                    {{ form.last_name.label_tag }} {{ form.last_name }}<br>
+                    {{ form.student_id.label_tag }} {{ form.student_id }}<br>
+                    {{ form.cohort.label_tag }} {{ form.cohort}}<br>
+                    <!--<p>Don't have an account <a href="/register/">Register</a> </p>-->
+                </div>
+                <div id="teacherFields" style="display:none;">
+                    {{ form.username.label_tag }} {{ form.username }}<br>
+                    {{ form.password.label_tag }} {{ form.password }}<br>
+                    <!--<p>Don't have an account <a href="/register_teacher/">Register</a> </p>-->
+                </div>
+                
+                <input type="hidden" id="submitType" name="submitType" value="">
+                <button type="submit" onclick="setSubmitType('student')">Login as Student</button>
+                <button type="submit" onclick="setSubmitType('teacher')">Login as Teacher</button>
+            </form>
+            <script>
+                document.querySelectorAll('input[name="user_type"]').forEach(function(elem) {
+                    elem.addEventListener('change', checkUserType);
+                });
+            </script>
+            <script>
+                const placeholders = document.querySelectorAll('.input-data label'),
+                      inputs = document.querySelectorAll('.input-data input, .input-data textarea');
+        
+                placeholders.forEach(function(el, i){
+                    let value = el.innerText,
+                        html = '';
+                    for(let w of value){
+                        if(!value) value = '&nbsp;';
+                        html += `<span class="letter">${w}</span>`;
+                    }
+                    el.innerHTML = html;
+                });
+        
+                inputs.forEach(function(el){
+                    let parent = el.parentNode;
+                    el.addEventListener('focus', function(){
+                        parent.classList.add('filled');
+                        placeholderAnimationIn(parent, true);
+                    }, false);
+                    el.addEventListener('blur', function(){
+                        if(el.value.length) return;
+                        parent.classList.remove('filled');
+                        placeholderAnimationIn(parent, false);
+                    }, false);
+                });
+        
+                function placeholderAnimationIn(parent, action){
+                    let act = (action)? 'add' : 'remove';
+                    let letters = parent.querySelectorAll('.letter');
+                    letters = [].slice.call(letters, 0);
+                    if(!action) letters = letters.reverse();
+                    letters.forEach(function(el, i){
+                        setTimeout(function(){
+                            let contains = parent.classList.contains('filled');
+                            if( (action && !contains) || (!action && contains)) return;
+                            el.classList[act]('active');
+                        }, (50*i));
+                    });
+                }
+        
+                setTimeout(function(){
+                    document.body.classList.add('on-start');
+                }, 100);
+        
+                setTimeout(function(){
+                    document.body.classList.add('document-loaded');
+                }, 1800);
+            </script>
+        </body>
+            <!-- Login heading -->
+        <!----    <h3>Login</h3>
+            <hr>
+
+           
+            {% if messages %}
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            - Username input field --
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter username" required>
+            </div>
+
+            - Password input field --
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            </div>
+
+            -- Link to registration page --
+            <p>Don't have an account <a href="/register/">Register</a> </p>
+
+            -- Submit button --
+            <button type="submit" class="btn btn-primary">Submit</button>
+        -->
+            
+        </form>
+        
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Django App{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        body {
+            animation: backgroundScroll 80s linear infinite;
+            background-image: url(https://cdn.pixabay.com/photo/2023/11/06/09/52/mountain-8369262_960_720.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            max-width: 80%;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .back-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .back-button button {
+            padding: 10px 20px;
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button button:hover {
+            background-color: #45a049;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../mark">Marking</a></li>
+                <li class="nav-item"><a class="nav-link" href="../studentmark">Input Student</a></li>
+            </ul>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Logout</button>
+                <style>
+                    .logout-button {
+                        background-color: #ff4d4d;
+                        color: white;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-size: 16px;
+                    }
+
+                    .logout-button:hover {
+                        background-color: #e60000;
+                    }
+                </style>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        <h1>Student List</h1>
+        <h2>Number of Students: {{ student_count }}</h2>
+        <h3>Number of Cohorts: {{ cohort_count }}</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Student ID</th>
+                <th>Cohort</th>
+              
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.0 }}</td>
+                <td>{{ student.1 }}</td>
+                <td>{{ student.2 }}</td>
+                <td>{{ student.3 }}</td>
+             
+            </tr>
+            {% endfor %}
+        </table>
+        {% endblock %}
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

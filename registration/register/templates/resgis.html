@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Registration form -->
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}  <!-- CSRF token for security -->
+            <body background="https://kitrinos.neocities.org/purplebg.gif">
+                <font size="10" color="green"></font>
+                <p align="center">
+                <font size="10" color="green">
+                </font>
+                </p>
+            <style>
+            table
+            {
+            width:1000px;
+            }
+            th
+            {
+            height:20px;
+            }
+            </style>
+            
+            
+            <table>
+            <tbody><tr>
+            <style type="text/css">
+            table.sample {
+              border-width: 5px;
+                border-spacing: 2px;
+                border-style: outset;
+                border-color: limegreen;
+                border-collapse: separate;
+                background: black url(https://kitrinos.neocities.org/pocketdimension.gif) repeat
+            }
+            table.sample td {
+                border-width: 2px;
+                padding: 1px;
+                border-style: inset;
+                border-color: black;
+                background: black url(https://kitrinos.neocities.org/pocketdimension.gif) repeat
+                -moz-border-radius: ;
+            }
+            </style>
+
+            <!-- Registration form heading -->
+            <h1 style="text-align: center;"><span style="color: blue;">Polytechnics</span></h1>
+        <!----   --- <h3>Register</h3>
+            <hr>
+
+                 <-- Display error/success messages --
+            {% if messages %}
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <-- First Name input field ->
+            <div class="form-group">
+                <label for="exampleInputEmail1">First name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter First name" name="first_name" required>
+            </div>
+
+            <- Last Name input field ->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Last name</label>
+                <input type="text" name="last_name" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter Last name" required>
+            </div>
+
+            <! Username input field ->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">module</label>
+                <input type="text" class="form-control" name="module" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="module" required>
+            </div>
+        -->
+
+            <!-- Password input field -->
+            <!--<div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                    placeholder="Password" required>
+            </div>>-->
+            <body>
+                <h1>Register</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" name="first_name" required><br>
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" name="last_name" required><br>
+                    <label for="studentid">Student ID:</label>
+                    <input type="text" id="studentid" name="studentid" required><br>
+                    <label for="models">Models:</label>
+                    <input type="text" id="models" name="models" required><br>
+                    <button type="submit">Register</button>
+                </form>
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </body>
+
+            <!-- Link to login page for users who already have an account -->
+            <p>Already have an account <a href="/login/">Login</a> </p>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
